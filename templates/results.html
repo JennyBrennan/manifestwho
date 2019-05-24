@@ -1,0 +1,6 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h1>You scored: {{correct_count}}/{{total_answers}}!</h1>
+  <h2>Share?</h2>
+  <a href="/reset" class="play">Play again?</a>
+{% endblock %}

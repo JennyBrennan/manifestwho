@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block body %}
+    <h1>ManifestWho?</h1>
+
+    <h2>Before your results</h2>
+    <p>Help us understand the electorate better</p>
+    <form method="POST" class="affiliation">
+      <select name="party_affiliation">
+        {% for party in parties %}
+          <option value={{ party.party_id }}>{{ party.party_name }}</option>
+        {% endfor %}
+        </select>
+      <button type="submit">Submit</button>
+    </form>
+
+{% endblock %}

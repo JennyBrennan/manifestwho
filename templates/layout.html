@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ManifestWho?</title>
+  <meta name="description" content="ManifestWho - a game for guessing UK political manifestos" />
+  <meta name="keywords" content="ManifestWho, UK, political parties, party manifesto, EU elections" />
+  <meta name="author" content="Jenny Brennan" />
+  <meta property="og:image" content="https://londontechmeetups.com/london-skyline-fb.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-control" content="public">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <nav>
+      <ul class="topnav">
+        <li><a href="/" class="home" onclick="navToggle()">ManifestWho?</a></li>
+        <li><a href="/" onclick="navToggle()">Play</a></li>
+        <li><a href="/about" onclick="navToggle()">About</a></li>
+        <li><a href="/faq" onclick="navToggle()">FAQ</a></li>
+        <li class="icon">
+          <a href="javascript:void(0);" onclick="navToggle()">Menu &#9776;</a>
+        </li>
+      </ul>
+    </nav>
+  <main>
+    {% block body %}{% endblock %}
+  </main>
+
+  <script>
+    // TODO: Add correct google analytics
+    // TODO: Add Cookie notification
+
+    // /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+    function navToggle() {
+        document.getElementsByClassName("topnav")[0].classList.toggle("responsive");
+    }
+    /* Add classes to nav and h2 on scroll past 140px */
+    window.onscroll = function() {myFunction()};
+    function myFunction() {
+      var headings = document.getElementsByTagName("h2");
+      if (document.body.scrollTop > 140 || document.documentElement.scrollTop > 140) {
+        document.getElementsByTagName("nav")[0].className = "fixie";
+        for (i=0; i < headings.length; i++) {
+           headings[i].className = "scrolled";
+        }
+      } else {
+        document.getElementsByTagName("nav")[0].className = "";
+        for (i=0; i < headings.length; i++) {
+           headings[i].className = "";
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
