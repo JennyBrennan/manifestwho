@@ -29,21 +29,22 @@ h2 {
   padding-top: 70px;
   margin-top: -50px;
 }
-a {
-  color: #00CA9E;
-  text-decoration: none;
+a, a:visited {
+  color: #00f1bc;
+  text-decoration: underline;
 }
 a:hover {
-  color: #008467;
+  color: #FF757D;
 }
 article h2, article p{
   text-align: left;
 }
-.play {
+a.play {
   display: inline-block;
   padding: 10px;
   background-color: #FF757D;
   color: #322F7C;
+  text-decoration: none;
   font-size: 30px;
   text-align: center;
   font-weight: 500;
@@ -52,7 +53,7 @@ article h2, article p{
   border-radius: 3px;
 }
 .play:hover {
-  background-color: #008467;
+  background-color: #fff;
 }
 ul {
   list-style-type: square;
@@ -90,7 +91,8 @@ nav .icon {
 nav .home {
   font-weight: 400;
 }
-nav li a {
+nav li a, nav li a:visited {
+  text-decoration: none;
   float: left;
   display: block;
   color: #FF757D;
@@ -98,7 +100,7 @@ nav li a {
   margin: 0;
 }
 nav li a:hover {
-  color: #008467;
+  color: #fff;
 }
 .quiz {
   width:80%;

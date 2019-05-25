@@ -1,9 +1,8 @@
 {% extends "layout.html" %}
 {% block body %}
-    <h1>ManifestWho?</h1>
-
-    <h2>Before your results</h2>
-    <p>Help us understand the electorate better</p>
+    <h1>Before your results</h1>
+    <p>Help us better understand how people perceive political parties, by answering a quick question:</p>
+    <h3>Which political party do you most identify with?</h3>
     <form method="POST" class="affiliation">
       <select name="party_affiliation">
         {% for party in parties %}
