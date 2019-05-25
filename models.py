@@ -24,16 +24,19 @@ class Quotation(db.Model):
     quotation = db.Column(db.String())
     party_id = db.Column(db.Integer, db.ForeignKey('parties.party_id')) # Party from whose manifesto the quotation was taken
     party = db.relationship("Party")
+    election = db.Column(db.String())
 
-    def __init__(self, quotation, party_id):
+    def __init__(self, quotation, party_id, election):
         self.quotation = quotation
         self.party_id = party_id
+        self.election = election
     
     def serialize(self):
         return {
             'quotation_id': self.quotation_id,
             'quotation': self.quotation,
-            'party_id': self.party_id
+            'party_id': self.party_id,
+            'election': self.election
         }     
 
 class Session(db.Model):
