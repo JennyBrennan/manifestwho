@@ -138,6 +138,24 @@ nav li a:hover {
   margin: 4px 0;
   cursor: pointer;
 }
+.result-breakdown {
+  margin-top: 30px;
+}
+.result-quotation {
+  font-style: italic;
+}
+.result {
+  display: block;
+  border-radius: 3px;
+  margin: 20px 0px;
+  padding: 10px;
+}
+.incorrect {
+  border: #FF757D 2px solid;
+}
+.correct {
+  border: #00f1bc 2px solid;
+}
 
 @media screen and (max-width:820px) {
   ul.topnav li:not(:first-child) {

@@ -122,11 +122,17 @@ def affiliation():
 
 @app.route("/results")
 def results():
-    from models import Answer, Quotation
+    from models import Answer, Quotation, Party
     cookie=request.cookies.get('manifestwho')
     session_id=uuid.UUID(cookie)
 
-    new_data=db.session.query(Answer, Quotation).join(Quotation, Quotation.quotation_id==Answer.quotation_id).filter(Answer.session_id == session_id).all()
+    guess = db.aliased(Party)
+    correct = db.aliased(Party)
+    new_data=db.session.query(Answer, Quotation, guess.party_name, correct.party_name).\
+        join(Quotation, Quotation.quotation_id==Answer.quotation_id).\
+        join(guess, guess.party_id == Answer.party_id_guess).\
+        join(correct, correct.party_id == Quotation.party_id).\
+        filter(Answer.session_id == session_id).all()
     
     answers_given_count=len(new_data)
     
@@ -135,7 +141,7 @@ def results():
         if d.Quotation.party_id == d.Answer.party_id_guess:
             correct_answers_count+=1
 
-    return render_template("results.html", correct_count=correct_answers_count, total_answers=answers_given_count)
+    return render_template("results.html", correct_count=correct_answers_count, total_answers=answers_given_count, results=new_data)
 
 @app.route("/reset")
 def reset():
