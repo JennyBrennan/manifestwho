@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h1>Something's gone wrong</h1>
+  <h2>Sorry about that, let's try again!</h2>
+  <p>Error: {{ error }}</p>
+  <a href="/reset" class="play">Play again?</a>
+{% endblock %}

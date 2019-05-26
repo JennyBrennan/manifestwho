@@ -22,6 +22,14 @@ def about():
 def faq():
     return render_template("faq.html")
 
+@app.route("/error")
+def error():
+    return render_template("error.html")
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html")
+
 def get_parties():
     from models import Party
     try: 
@@ -50,7 +58,6 @@ def get_quotation(session_id):
         query=db.session.query(Answer.quotation_id).filter(Answer.session_id == session_id)
         quotation=db.session.query(Quotation).filter(Quotation.quotation_id.notin_(query)).order_by(func.random()).first() # Get random quotation
         return quotation
-        # TODO: Handle if there are no quotations left
     except Exception as e:
         return(str(e))
 
@@ -87,7 +94,7 @@ def add_answer():
             db.session.add(answer)
             db.session.commit()
         except Exception as e:
-            return(str(e))
+            return render_template("error.html", error=str(e))
 
     quotations_answered=get_quotations_answered(session_id)
     quotation_row=get_quotation(session_id)
