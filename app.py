@@ -36,7 +36,7 @@ def get_parties():
         parties=Party.query.all()
         return  parties
     except Exception as e:
-	    return(str(e))
+	    return render_template("error.html", error=str(e))
 
 def add_session(session_id):
     from models import Session
@@ -50,7 +50,7 @@ def add_session(session_id):
         return "Session added. Session id={}".format(quiz_session.session_id)
     except Exception as e:
         db.session.rollback()
-        return(str(e))
+        return render_template("error.html", error=str(e))
 
 def get_quotation(session_id):
     from models import Quotation, Answer
@@ -59,7 +59,7 @@ def get_quotation(session_id):
         quotation=db.session.query(Quotation).filter(Quotation.quotation_id.notin_(query)).order_by(func.random()).first() # Get random quotation
         return quotation
     except Exception as e:
-        return(str(e))
+        return render_template("error.html", error=str(e))
 
 def get_quotations_answered(session_id):
     from models import Answer
@@ -67,7 +67,7 @@ def get_quotations_answered(session_id):
         answers=db.session.query(Answer.quotation_id).filter(Answer.session_id == session_id).all()
         return answers
     except Exception as e:
-        return(str(e))
+        return render_template("error.html", error=str(e))
 
 @app.route("/answer", methods=['GET','POST'])
 def add_answer():
@@ -133,22 +133,25 @@ def results():
     cookie=request.cookies.get('manifestwho')
     session_id=uuid.UUID(cookie)
 
-    guess = db.aliased(Party)
-    correct = db.aliased(Party)
-    new_data=db.session.query(Answer, Quotation, guess.party_name, correct.party_name).\
-        join(Quotation, Quotation.quotation_id==Answer.quotation_id).\
-        join(guess, guess.party_id == Answer.party_id_guess).\
-        join(correct, correct.party_id == Quotation.party_id).\
-        filter(Answer.session_id == session_id).all()
-    
-    answers_given_count=len(new_data)
-    
-    correct_answers_count=0
-    for d in new_data:
-        if d.Quotation.party_id == d.Answer.party_id_guess:
-            correct_answers_count+=1
+    try: 
+        guess = db.aliased(Party)
+        correct = db.aliased(Party)
+        new_data=db.session.query(Answer, Quotation, guess.party_name, correct.party_name).\
+            join(Quotation, Quotation.quotation_id==Answer.quotation_id).\
+            join(guess, guess.party_id == Answer.party_id_guess).\
+            join(correct, correct.party_id == Quotation.party_id).\
+            filter(Answer.session_id == session_id).all()
+        
+        answers_given_count=len(new_data)
+        
+        correct_answers_count=0
+        for d in new_data:
+            if d.Quotation.party_id == d.Answer.party_id_guess:
+                correct_answers_count+=1
 
-    return render_template("results.html", correct_count=correct_answers_count, total_answers=answers_given_count, results=new_data)
+        return render_template("results.html", correct_count=correct_answers_count, total_answers=answers_given_count, results=new_data)
+    except Exception as e:
+        return render_template("error.html", error=str(e))
 
 @app.route("/reset")
 def reset():
