@@ -1,6 +1,6 @@
 # ManifestWho?
 
-A game of guessing UK political party manifestos. 
+A game of guessing UK political party manifestos: manifestwho.com.
 
 Manifestwho is a quiz about UK political manifestos. It's mainly supposed to be fun (for a niche, political kind of fun). It's also a little experiment into how well people can recognise messages from manifestos - we've got a suspicion it's quite hard.
 
