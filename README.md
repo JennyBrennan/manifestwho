@@ -66,7 +66,8 @@ A few things I'd like to tackle in the future (particularly before any future el
 * Update with new manifestos, come the next UK General Election (which could be at any time!) - possibly version it to allow people to still play the EU 2019 elections version. 
 * Automate testing - at the moment I'm manually testing the app as I chucked it up pretty quickly as a proof of concept; would be better to have tests that mock postgres and/or run end-to-end UI tests with Selenium or similar.
 * Add web analytics to monitor where participants are based and where referrals are coming from (e.g. if all participants were in the US, then the data won't tell us much about UK public understanding).
-* A sharing/social media plan to get the word out and increase participation.
 * Consider additional voluntary data collection at the end e.g. voting intention. Look into the best ways of phrasing these from existing research.
+* A sharing/social media plan to get the word out and increase participation.
+* Design a swanky logo and add favicon.
 
 There's also likely a bunch of general tidying/improvement that could be done in the code - I'm new to this stack (beyond teaching the [Code First Girls](https://codefirstgirls.org.uk) Python Course) and picked it as a quick learning opportunity, so suggestions welcome!
