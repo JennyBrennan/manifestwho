@@ -36,7 +36,7 @@ a, a:visited {
 a:hover {
   color: #FF757D;
 }
-article h2, article p{
+article h2, article p, article li{
   text-align: left;
 }
 a.play {
@@ -182,3 +182,4 @@ nav li a:hover {
     text-align: left;
     width: 100%;
   }
+}
