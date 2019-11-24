@@ -3,13 +3,13 @@
     <h2>"{{ quotation.quotation }}"</h2>
     <small>Which manifesto is this from?</small>
     {% for party in parties %}
-        {% if party.party_id != 3 %}
+        {% if party.party_id != 7 %} {# Do not include UKIP. UKIP was previously an option for the EU elections quiz. #}
             <form method="POST" class="quiz">
                 <input type="hidden" name="quotation_id" value="{{ quotation.quotation_id }}">
                 <button type="submit" id="party" name="party" value="{{ party.party_id }}" class="button">{{ party.party_name }}</button>
             </form>
         {% endif %}
     {% endfor %}
-    <small>Why aren't the Conservatives listed? See our <a href="/faq">FAQ</a>.</small>
+    <small>Why are/aren't some parties listed? See our <a href="/faq">FAQ</a>.</small>
 
 {% endblock %}
