@@ -3,7 +3,7 @@
     <h2>"{{ quotation.quotation }}"</h2>
     <small>Which manifesto is this from?</small>
     {% for party in parties %}
-        {% if party.party_id != 7 %} {# Do not include UKIP. UKIP was previously an option for the EU elections quiz. #}
+        {% if (party.party_id != 7 and party.party_id != 2) %} {# Do not include UKIP or Change UK. These were previously options for the EU elections quiz. #}
             <form method="POST" class="quiz">
                 <input type="hidden" name="quotation_id" value="{{ quotation.quotation_id }}">
                 <button type="submit" id="party" name="party" value="{{ party.party_id }}" class="button">{{ party.party_name }}</button>
