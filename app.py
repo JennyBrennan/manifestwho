@@ -56,15 +56,19 @@ def get_quotation(session_id):
     from models import Quotation, Answer
     try:
         query=db.session.query(Answer.quotation_id).filter(Answer.session_id == session_id)
-        quotation=db.session.query(Quotation).filter(Quotation.quotation_id.notin_(query)).order_by(func.random()).first() # Get random quotation
+        quotation=db.session.query(Quotation).filter(Quotation.election == 'GE 2019').filter(Quotation.quotation_id.notin_(query)).order_by(func.random()).first() # Get random quotation
         return quotation
     except Exception as e:
         return render_template("error.html", error=str(e))
 
 def get_quotations_answered(session_id):
-    from models import Answer
+    from models import Quotation, Answer
     try:
-        answers=db.session.query(Answer.quotation_id).filter(Answer.session_id == session_id).all()
+
+        answers=db.session.query(Answer, Quotation).\
+            join(Quotation, Quotation.quotation_id==Answer.quotation_id).\
+            filter(Answer.session_id == session_id).\
+            filter(Quotation.election == 'GE 2019').all()
         return answers
     except Exception as e:
         return render_template("error.html", error=str(e))
@@ -140,7 +144,8 @@ def results():
             join(Quotation, Quotation.quotation_id==Answer.quotation_id).\
             join(guess, guess.party_id == Answer.party_id_guess).\
             join(correct, correct.party_id == Quotation.party_id).\
-            filter(Answer.session_id == session_id).all()
+            filter(Answer.session_id == session_id).\
+            filter(Quotation.election == 'GE 2019').all()
         
         answers_given_count=len(new_data)
         
