@@ -6,17 +6,15 @@ Manifestwho is a quiz about UK political manifestos. It's mainly supposed to be 
 
 Built in Python using Flask and a Postgres database. Deployed on Heroku at manifestwho.com. Contributions are very welcome (more details below). 
 
-## EU Election 2019 Manifesto reference
+## General Election 2019 Manifesto reference
 
-European Election 2019 manifestos used to source quotations, in alphabetical order:
+General Election 2019 manifestos used to source quotations, in alphabetical order (last accessed 1st Dec):
 
-* [Brexit party pledge card](https://twitter.com/Se[bastianEPayne/status/1125711388054364161/photo/1) 
-* [Change UK Charter for Remain](https://voteforchange.uk/wp-content/uploads/2019/05/Change-UK-Charter-for-Remain.pdf)
-* Conservative Party did not produce one so not included
-* [Green Party Manifesto](https://www.greenparty.org.uk/assets/images/national-site/eu-2019/eu-manifesto-online-19-05-07.pdf) 
-* [Labour Party Manifesto](http://labour.org.uk/wp-content/uploads/2019/05/Transforming-Britain-and-Europe-for-the-many-not-the-few.pdf)
-* [Liberal Democrat Manifesto](https://d3n8a8pro7vhmx.cloudfront.net/libdems/pages/45093/attachments/original/1557342873/Liberal_Democrat_European_Election_Manifesto_2019.pdf?1557342873)
-* [UKIP Manifesto](https://www.ukip.org/pdf/EUManifesto2019-3.pdf)
+- [Brexit Party](https://www.thebrexitparty.org/wp-content/uploads/2019/11/Contract-With-The-People.pdf)
+- [Conservative Party](https://assets-global.website-files.com/5da42e2cae7ebd3f8bde353c/5dda924905da587992a064ba_Conservative%202019%20Manifesto.pdf)
+- [Green Party](https://www.greenparty.org.uk/assets/files/Elections/Green%20Party%20Manifesto%202019.pdf)
+- [Labour Party](https://labour.org.uk/wp-content/uploads/2019/11/Real-Change-Labour-Manifesto-2019.pdf)
+- [Liberal Democrats](https://d3n8a8pro7vhmx.cloudfront.net/libdems/pages/57307/attachments/original/1574876236/Stop_Brexit_and_Build_a_Brighter_Future.pdf?1574876236)
 
 Read more about manifesto inclusion choices in the [FAQ](https://manifestwho.com/faq).
 
@@ -61,9 +59,9 @@ python3 app.py
 
 ## TODOs
 
-A few things I'd like to tackle in the future (particularly before any future election):
+A few things I'd like to tackle in the future:
 
-* Update with new manifestos, come the next UK General Election (which could be at any time!) - possibly version it to allow people to still play the EU 2019 elections version. 
+* Allow people to go back and play previous versions (EU elections 2019 version).
 * Automate testing - at the moment I'm manually testing the app as I chucked it up pretty quickly as a proof of concept; would be better to have tests that mock postgres and/or run end-to-end UI tests with Selenium or similar.
 * Add web analytics to monitor where participants are based and where referrals are coming from (e.g. if all participants were in the US, then the data won't tell us much about UK public understanding).
 * Consider additional voluntary data collection at the end e.g. voting intention. Look into the best ways of phrasing these from existing research.
