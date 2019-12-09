@@ -10,6 +10,11 @@
             </form>
         {% endif %}
     {% endfor %}
+    <div class="progress-bar">
+        <div class="progress" style="width:{{ (answered_count + 1) / 8 * 100 }}%"></div>
+    </div>
+    <small>{{ answered_count + 1 }} / 8</small>
+    <br>
     <small>Why are/aren't some parties listed? See our <a href="/faq">FAQ</a>.</small>
 
 {% endblock %}

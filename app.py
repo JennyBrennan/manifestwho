@@ -101,12 +101,13 @@ def add_answer():
             return render_template("error.html", error=str(e))
 
     quotations_answered=get_quotations_answered(session_id)
+    quotations_answered_count=len(quotations_answered)
     quotation_row=get_quotation(session_id)
 
-    if len(quotations_answered) >= quotation_limit:
+    if quotations_answered_count >= quotation_limit:
         response = make_response(redirect(url_for('affiliation')))
     else: 
-        response = make_response(render_template("question.html", quotation=quotation_row, parties=parties))
+        response = make_response(render_template("question.html", quotation=quotation_row, parties=parties, answered_count=quotations_answered_count))
 
     response.set_cookie('manifestwho', value=str(session_id))
 
@@ -146,7 +147,6 @@ def results():
             join(correct, correct.party_id == Quotation.party_id).\
             filter(Answer.session_id == session_id).\
             filter(Quotation.election == 'GE 2019').all()
-        
         answers_given_count=len(new_data)
         
         correct_answers_count=0

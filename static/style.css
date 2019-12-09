@@ -156,6 +156,18 @@ nav li a:hover {
 .correct {
   border: #00f1bc 2px solid;
 }
+.progress-bar {
+  width: 50%;
+  margin: 10px auto;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  padding: 1px;
+}
+.progress {
+  background-color: #fff;
+  display: block;
+  height: 10px;
+}
 
 @media screen and (max-width:820px) {
   ul.topnav li:not(:first-child) {
