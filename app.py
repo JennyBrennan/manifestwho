@@ -22,6 +22,10 @@ def about():
 def faq():
     return render_template("faq.html")
 
+@app.route("/findings")
+def findings():
+    return render_template("findings.html")
+
 @app.route("/error")
 def error():
     return render_template("error.html")
