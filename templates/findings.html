@@ -7,7 +7,9 @@
     <p>For the sake of these stats, we're considering each 'attempt' at the quiz a person, but in practice some people may have done the quiz twice, or with friends. For stats on total scores on the quiz, we limit the dataset to the 386 'people' who completed 8 questions. For stats on individual questions we include partially answered quizzes.</p>
     <h2>How did people score?</h2>
     <canvas id="quizScores" width="400" height="200"></canvas>  
-  </article>
+    <h2>Party affiliation of respondents</h2>
+    <canvas id="partyAffiliation" width="300" height="300"></canvas>  
+ </article>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
   <script src="{{ url_for('static', filename='findings.js') }}"></script>

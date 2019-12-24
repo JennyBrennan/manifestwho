@@ -41,3 +41,33 @@ var quizScores = new Chart(quizScoresDiv, {
         }
     }
 });
+
+var partyAffiliationDiv = document.getElementById('partyAffiliation').getContext('2d');
+var partyAffiliation = new Chart(partyAffiliationDiv, {
+    type: 'doughnut',
+    data: {
+        labels:['Brexit','Change UK','Conservative','Green','Labour','Liberal Democrat','Unknown'],
+        datasets: [{
+            data: [12, 6, 15, 68, 162, 123, 37],
+            backgroundColor: [
+                'rgba(18, 182, 207, 0.2)',
+                'rgba(0, 0, 0, 0.2)',
+                'rgba(0, 135, 220, 0.2)',
+                'rgba(0, 116, 95, 0.2)',
+                'rgba(213, 0, 0, 0.2)',
+                'rgba(253, 187, 48, 0.2)',
+                'rgba(255, 255, 255, 0.1)'
+            ],
+            borderColor: [
+              'rgba(18, 182, 207, 1)',
+              'rgba(0, 0, 0, 1)',
+              'rgba(0, 135, 220, 1)',
+              'rgba(0, 116, 95, 1)',
+              'rgba(213, 0, 0, 1)',
+              'rgba(253, 187, 48, 1)',
+              'rgba(255, 255, 255, 0.7)'
+            ],
+            borderWidth: 1
+        }]
+    }
+});
